@@ -16,19 +16,21 @@
 
 package com.alibaba.cloudapi.sdk.core;
 
+import java.security.SecureRandom;
+import java.util.concurrent.ExecutorService;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.KeyManager;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.X509TrustManager;
+
 import com.alibaba.cloudapi.sdk.core.exception.SdkClientException;
 import com.alibaba.cloudapi.sdk.core.model.ApiCallBack;
 import com.alibaba.cloudapi.sdk.core.model.ApiRequest;
 import com.alibaba.cloudapi.sdk.core.model.ApiResponse;
 import com.alibaba.cloudapi.sdk.core.model.BuilderParams;
-import okhttp3.internal.Util;
-import org.apache.commons.lang3.StringUtils;
 
-import javax.net.ssl.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * builder基类
@@ -39,11 +41,6 @@ import java.util.concurrent.TimeUnit;
 public abstract class BaseApiClientBuilder<Subclass extends BaseApiClientBuilder, TypeToBuild extends BaseApiClient> {
 
     private BuilderParams params = new BuilderParams();
-
-    /**
-     * default
-     */
-    private static final int DEFAULT_KEEP_ALIVE_TIME = 60;
 
     /**
      * get your app key from apigateway.console.aliyun.com -> API网关 -> 调用API -> 应用管理 -> 应用详情 -> appKey
@@ -64,11 +61,23 @@ public abstract class BaseApiClientBuilder<Subclass extends BaseApiClientBuilder
     /**
      * Sets maxIdleConnections property of the connectionPool
      *
+     * <p>This method is deprecated since 1.0.3, use {@link #maxIdleTimeMills(long)} instead</>
+     *
      * @param maxIdleConnections The maximum number of idle connections for each address
      * @return @{@linkplain BaseApiClientBuilder this builder}
      */
+    @Deprecated()
     public BaseApiClientBuilder<Subclass, TypeToBuild> maxIdleConnections(int maxIdleConnections) {
         params.setMaxIdleConnections(maxIdleConnections);
+        return this;
+    }
+
+    /**
+     * Sets maxIdleTimeMills property of the connectionPool
+     *
+     */
+    public BaseApiClientBuilder<Subclass, TypeToBuild> maxIdleTimeMills(long maxIdleTimeMillis) {
+        params.setMaxIdleTimeMillis(maxIdleTimeMillis);
         return this;
     }
 
@@ -210,7 +219,33 @@ public abstract class BaseApiClientBuilder<Subclass extends BaseApiClientBuilder
      * @return @{@linkplain BaseApiClientBuilder this builder}
      */
     public BaseApiClientBuilder<Subclass, TypeToBuild> x509TrustManager(X509TrustManager x509TrustManager) {
-        params.setX509TrustManager(x509TrustManager);
+        return x509TrustManagers(new X509TrustManager[] {x509TrustManager});
+    }
+
+    /**
+     * Sets the socket factory and trust manager used to secure HTTPS connections. If unset, the
+     * system defaults will be used.
+     *
+     * <p>Most applications should not call this method, and instead use the system defaults. Those
+     * classes include special optimizations that can be lost if the implementations are decorated.
+     *
+     * <p>If necessary, you can create and configure the defaults yourself.
+     *
+     * @param x509TrustManagers
+     * @return @{@linkplain BaseApiClientBuilder this builder}
+     */
+    public BaseApiClientBuilder<Subclass, TypeToBuild> x509TrustManagers(X509TrustManager[] x509TrustManagers) {
+        params.setX509TrustManagers(x509TrustManagers);
+        return this;
+    }
+
+    public BaseApiClientBuilder<Subclass, TypeToBuild> keyManagers(KeyManager[] keyManagers) {
+        params.setKeyManagers(keyManagers);
+        return this;
+    }
+
+    public BaseApiClientBuilder<Subclass, TypeToBuild> secureRandom(SecureRandom secureRandom) {
+        params.setSecureRandom(secureRandom);
         return this;
     }
 
@@ -228,20 +263,32 @@ public abstract class BaseApiClientBuilder<Subclass extends BaseApiClientBuilder
         return this;
     }
 
-    public final TypeToBuild build() {
-        completionParams();
-        return build(params);
+    /**
+     * Sets the extra params while you implements a {@linkplain HttpClient httpClient} yourself.
+     *
+     * <p>This map will transfer to the constructor of the implements of {@linkplain HttpClient HttpClient}
+     *
+     * <p>By default, you can set key="apache.httpclient.builder" with a {@link org.apache.http.impl.client.HttpClientBuilder HttpClientBuilder} as value
+     * to defined the base builder in {@link com.alibaba.cloudapi.sdk.core.http.ApacheHttpClient#ApacheHttpClient(BuilderParams) ApacheHttpClient constructor}
+     *
+     * @param key
+     * @param value
+     * @return
+     */
+    public BaseApiClientBuilder<Subclass, TypeToBuild> setExtParams(String key, Object value){
+        params.setExtParam(key, value);
+        return this;
     }
 
-    protected abstract TypeToBuild build(BuilderParams params);
-
-    private void completionParams() {
+    public final TypeToBuild build() {
         if (StringUtils.isEmpty(this.params.getAppKey()) || StringUtils.isEmpty(this.params.getAppSecret())) {
             throw new SdkClientException("appKey or appSecret must not be null");
         }
-        if (this.params.getExecutorService() == null) {
-            this.params.setExecutorService(new ThreadPoolExecutor(0, Integer.MAX_VALUE, DEFAULT_KEEP_ALIVE_TIME, TimeUnit.SECONDS, new SynchronousQueue(), Util.threadFactory("Default SDK ThreadPool", false)));
-        }
+        TypeToBuild apiClient = build(params);
+        BaseApiClient.instanceMap.put(apiClient.getClass(), apiClient);
+        return apiClient;
     }
+
+    protected abstract TypeToBuild build(BuilderParams params);
 
 }

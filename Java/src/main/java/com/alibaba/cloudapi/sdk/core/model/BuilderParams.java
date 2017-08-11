@@ -16,12 +16,18 @@
 
 package com.alibaba.cloudapi.sdk.core.model;
 
-
-import com.alibaba.cloudapi.sdk.core.enums.Scheme;
-
-import javax.net.ssl.*;
 import java.io.Serializable;
+import java.security.SecureRandom;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.KeyManager;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.X509TrustManager;
+
+import com.alibaba.cloudapi.sdk.core.BaseApiClient;
 
 /**
  * 用于构建sdkClient的Builder所需的参数
@@ -41,7 +47,8 @@ public final class BuilderParams implements Serializable, Cloneable {
      * connectionPool
      **/
     private int maxIdleConnections = 5;
-    private long keepAliveDurationMillis = 5L;
+    private long maxIdleTimeMillis = 60 * 1000L;
+    private long keepAliveDurationMillis = 5000L;
 
     /**
      * timeout
@@ -51,15 +58,12 @@ public final class BuilderParams implements Serializable, Cloneable {
     private long writeTimeoutMillis = 15000L;
 
     /**
-     * schema
-     */
-    private Scheme schema;
-
-    /**
      * https
      **/
     private SSLSocketFactory sslSocketFactory = null;
-    private X509TrustManager x509TrustManager = null;
+    private KeyManager[] keyManagers = null;
+    private X509TrustManager[] x509TrustManagers = null;
+    private SecureRandom secureRandom = null;
     private HostnameVerifier hostnameVerifier = null;
 
     /**
@@ -69,6 +73,13 @@ public final class BuilderParams implements Serializable, Cloneable {
     private int maxRequestsPerHost = 5;
     private Runnable idleCallback = null;
     private ExecutorService executorService = null;
+
+    /**
+     * extra params
+     */
+    private Map<String, Object> extParams = new HashMap<String, Object>();
+
+    private Class<? extends BaseApiClient> apiClientClass;
 
     public String getAppKey() {
         return appKey;
@@ -134,12 +145,28 @@ public final class BuilderParams implements Serializable, Cloneable {
         this.sslSocketFactory = sslSocketFactory;
     }
 
-    public X509TrustManager getX509TrustManager() {
-        return x509TrustManager;
+    public KeyManager[] getKeyManagers() {
+        return keyManagers;
     }
 
-    public void setX509TrustManager(X509TrustManager x509TrustManager) {
-        this.x509TrustManager = x509TrustManager;
+    public void setKeyManagers(KeyManager[] keyManagers) {
+        this.keyManagers = keyManagers;
+    }
+
+    public X509TrustManager[] getX509TrustManagers() {
+        return x509TrustManagers;
+    }
+
+    public void setX509TrustManagers(X509TrustManager[] x509TrustManagers) {
+        this.x509TrustManagers = x509TrustManagers;
+    }
+
+    public SecureRandom getSecureRandom() {
+        return secureRandom;
+    }
+
+    public void setSecureRandom(SecureRandom secureRandom) {
+        this.secureRandom = secureRandom;
     }
 
     public HostnameVerifier getHostnameVerifier() {
@@ -182,11 +209,25 @@ public final class BuilderParams implements Serializable, Cloneable {
         this.executorService = executorService;
     }
 
-    public Scheme getSchema() {
-        return schema;
+    public Object getExtParam(Object key) {return extParams.get(key);}
+
+    public Object setExtParam(String key, Object value) {return extParams.put(key, value);}
+
+    public boolean containsExtParam(Object key) {return extParams.containsKey(key);}
+
+    public long getMaxIdleTimeMillis() {
+        return maxIdleTimeMillis;
     }
 
-    public void setSchema(Scheme schema) {
-        this.schema = schema;
+    public void setMaxIdleTimeMillis(long maxIdleTimeMillis) {
+        this.maxIdleTimeMillis = maxIdleTimeMillis;
+    }
+
+    public Class<? extends BaseApiClient> getApiClientClass() {
+        return apiClientClass;
+    }
+
+    public void setApiClientClass(Class<? extends BaseApiClient> apiClientClass) {
+        this.apiClientClass = apiClientClass;
     }
 }

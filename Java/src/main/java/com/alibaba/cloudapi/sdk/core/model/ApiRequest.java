@@ -25,6 +25,9 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+
+import org.apache.commons.collections4.MapUtils;
 
 /**
  * api请求类
@@ -140,6 +143,14 @@ public final class ApiRequest implements Serializable, Cloneable {
         }
     }
 
+    public void addMappedParams(Map<String, String> params, ParamPosition position){
+        if(MapUtils.isNotEmpty(params)){
+            for(Entry<String, String> entry : params.entrySet()){
+                addParam(entry.getKey(), entry.getValue(), position, false);
+            }
+        }
+    }
+
     @Deprecated
     public void addPathParam(String name, String value) {
         this.pathParams.put(name, value);
@@ -173,5 +184,41 @@ public final class ApiRequest implements Serializable, Cloneable {
             ", formParams=" + formParams +
             ", body=" + Arrays.toString(body) +
             '}';
+    }
+
+    public void setScheme(Scheme scheme) {
+        this.scheme = scheme;
+    }
+
+    public void setMethod(Method method) {
+        this.method = method;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public void setPathParams(Map<String, String> pathParams) {
+        this.pathParams = pathParams;
+    }
+
+    public void setHeaders(Map<String, String> headers) {
+        this.headers = headers;
+    }
+
+    public void setQuerys(Map<String, String> querys) {
+        this.querys = querys;
+    }
+
+    public void setFormParams(Map<String, String> formParams) {
+        this.formParams = formParams;
+    }
+
+    public void setBody(byte[] body) {
+        this.body = body;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

@@ -18,7 +18,6 @@ package com.alibaba.cloudapi.sdk.core.model;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Maps;
-import okhttp3.Response;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -42,26 +41,26 @@ public final class ApiResponse implements Serializable, Cloneable {
     private Map<String, String> headers;
     private byte[] body;
 
-    public void parseFrom(Response response) throws IOException{
-        this.statusCode = response.code();
-        this.contentType = "";
-        this.message = response.message();
-        Map<String, List<String>> multiMap = response.headers().toMultimap();
-
-        // okHttp返回的multiMap中的value仅1个元素
-        this.headers = Maps.transformValues(multiMap, new Function<List<String>, String>() {
-            @Override
-            public String apply(List<String> strings) {
-
-                if(CollectionUtils.isNotEmpty(strings)){
-                    return strings.get(0);
-                }else{
-                    return StringUtils.EMPTY;
-                }
-            }
-        });
-        this.body = response.body().bytes();
-    }
+    //public void parseFrom(Response response) throws IOException{
+    //    this.statusCode = response.code();
+    //    this.contentType = "";
+    //    this.message = response.message();
+    //    Map<String, List<String>> multiMap = response.headers().toMultimap();
+    //
+    //    // okHttp返回的multiMap中的value仅1个元素
+    //    this.headers = Maps.transformValues(multiMap, new Function<List<String>, String>() {
+    //        @Override
+    //        public String apply(List<String> strings) {
+    //
+    //            if(CollectionUtils.isNotEmpty(strings)){
+    //                return strings.get(0);
+    //            }else{
+    //                return StringUtils.EMPTY;
+    //            }
+    //        }
+    //    });
+    //    this.body = response.body().bytes();
+    //}
 
 
     public int getStatusCode() {
@@ -82,6 +81,26 @@ public final class ApiResponse implements Serializable, Cloneable {
 
     public byte[] getBody() {
         return body;
+    }
+
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setHeaders(Map<String, String> headers) {
+        this.headers = headers;
+    }
+
+    public void setBody(byte[] body) {
+        this.body = body;
     }
 
     @Override
