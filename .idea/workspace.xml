@@ -1,7 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d08bd4cf-c764-4f48-991d-cd6b9de262fd" name="Default Changelist" comment="" />
+    <list default="true" id="d08bd4cf-c764-4f48-991d-cd6b9de262fd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/annotation/NotThreadSafe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/annotation/NotThreadSafe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/annotation/ThreadSafe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/annotation/ThreadSafe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/client/ApacheHttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/client/ApacheHttpClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/client/ApacheIdleConnectionCleaner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/client/ApacheIdleConnectionCleaner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/client/BaseApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/client/BaseApiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/client/OkHttp3Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/client/OkHttp3Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/client/WebSocketApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/client/WebSocketApiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/constant/HttpConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/constant/HttpConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/constant/SdkConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/constant/SdkConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/enums/HttpConnectionModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/enums/HttpConnectionModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/enums/HttpMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/enums/HttpMethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/enums/ParamPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/enums/ParamPosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/enums/Scheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/enums/Scheme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/enums/WebSocketApiType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/enums/WebSocketApiType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/enums/WebSocketConnectStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/enums/WebSocketConnectStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/exception/SdkException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/exception/SdkException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/model/ApiCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/ApiCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/model/ApiContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/ApiContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/model/ApiHttpMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/ApiHttpMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/model/ApiRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/ApiRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/model/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/ApiResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/model/ApiWebSocketListner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/ApiWebSocketListner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/model/BaseClientInitialParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/BaseClientInitialParam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/model/HttpClientBuilderParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/HttpClientBuilderParams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/model/WebSocketApiRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/WebSocketApiRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/model/WebSocketClientBuilderParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/WebSocketClientBuilderParams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/signature/HMacSHA1SignerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/signature/HMacSHA1SignerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/signature/HMacSHA256SignerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/signature/HMacSHA256SignerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/signature/ISignerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/signature/ISignerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/signature/ISinger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/signature/ISinger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/signature/SignerFactoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/signature/SignerFactoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/util/ApiRequestMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/util/ApiRequestMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/util/CallbackManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/util/CallbackManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/util/HeartBeatManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/util/HeartBeatManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/util/HttpCommonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/util/HttpCommonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/util/ObjectReference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/util/ObjectReference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/util/SignUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/util/SignUtil.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +78,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -31,5 +95,16 @@
       <updated>1641526215783</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
