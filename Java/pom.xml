@@ -6,11 +6,13 @@
 
     <groupId>com.aliyun.api.gateway</groupId>
     <artifactId>sdk-core-java</artifactId>
-    <version>1.0.2</version>
+    <version>1.1.7</version>
     <packaging>jar</packaging>
     <name>Aliyun API Gateway SDK Core Lib for Java</name>
     <description>The core dependency lib for all Aliyun api gateway java sdk</description>
     <url>https://www.aliyun.com/product/apigateway</url>
+
+
 
     <licenses>
         <license>
@@ -19,6 +21,8 @@
         </license>
     </licenses>
 
+
+
     <developers>
         <developer>
             <id>aliyunproducts</id>
@@ -26,7 +30,7 @@
             <email>aliyunsdk@aliyun.com</email>
         </developer>
     </developers>
-    
+
     <scm>
         <url></url>
         <connection></connection>
@@ -34,14 +38,30 @@
 
     <dependencies>
         <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>3.6.0</version>
+            <version>3.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.5</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -56,7 +76,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>20.0</version>
+            <version>24.1.1</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -64,6 +84,31 @@
             <version>4.5</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.6.7.5</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.googlecode.juniversalchardet</groupId>
+            <artifactId>juniversalchardet</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-digest</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -103,6 +148,29 @@
                         </tag>
                     </tags>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d08bd4cf-c764-4f48-991d-cd6b9de262fd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Java/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/BaseApiClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/BaseApiClientBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/HttpClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/annotation/NotThreadSafe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/annotation/ThreadSafe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/constant/HttpConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/constant/SdkConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/enums/Method.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/enums/ParamPosition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/enums/Scheme.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/exception/SdkClientException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/http/ApacheHttpClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/http/ApacheIdleConnectionCleaner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/http/HttpClientFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/model/ApiCallBack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/model/ApiRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/model/ApiResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/model/BuilderParams.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/util/SignUtil.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="23LvWozh3CDQDNUuvM5ZblQS9eV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d08bd4cf-c764-4f48-991d-cd6b9de262fd" name="Default Changelist" comment="" />
+      <created>1641526215783</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1641526215783</updated>
+    </task>
+    <servers />
+  </component>
+</project>
