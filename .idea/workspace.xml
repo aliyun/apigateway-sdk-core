@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d08bd4cf-c764-4f48-991d-cd6b9de262fd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Java/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/BaseApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/BaseApiClientBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/HttpClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/annotation/NotThreadSafe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/annotation/ThreadSafe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/constant/HttpConstant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/constant/SdkConstant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/enums/Method.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/enums/ParamPosition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/enums/Scheme.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/exception/SdkClientException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/http/ApacheHttpClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/http/ApacheIdleConnectionCleaner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/http/HttpClientFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/model/ApiCallBack.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/model/ApiRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/model/ApiResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/model/BuilderParams.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/main/java/com/alibaba/cloudapi/sdk/core/util/SignUtil.java" beforeDir="false" />
-    </list>
+    <list default="true" id="d08bd4cf-c764-4f48-991d-cd6b9de262fd" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
