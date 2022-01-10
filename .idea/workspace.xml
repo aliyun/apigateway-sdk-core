@@ -70,11 +70,16 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="978" y="477" width="604" height="486" key="find.popup" timestamp="1641784786726">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="978" y="477" width="604" height="486" key="find.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1641784786726" />
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1641785238021">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1641785238021" />
   </component>
 </project>
