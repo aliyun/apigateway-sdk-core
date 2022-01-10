@@ -143,6 +143,7 @@
                             <head>创建日期:</head>
                         </tag>
                     </tags>
+                    <encoding>UTF-8</encoding>
                 </configuration>
                 <executions>
                     <execution>
