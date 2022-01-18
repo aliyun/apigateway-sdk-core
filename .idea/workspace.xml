@@ -20,8 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d08bd4cf-c764-4f48-991d-cd6b9de262fd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/HttpMethodModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/enums/HttpMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/enums/HttpMethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/ApiRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/ApiRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +83,14 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1045" y="426" key="RollbackChangesDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1642495792208" />
+    <state x="100" y="100" width="2360" height="1240" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1642497696832">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="100" y="100" width="2360" height="1240" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1642497696831" />
+    <state x="100" y="100" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1642497696832">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="100" y="100" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1642497696832" />
     <state x="978" y="477" width="604" height="486" key="find.popup" timestamp="1641784786726">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
