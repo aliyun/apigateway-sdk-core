@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d08bd4cf-c764-4f48-991d-cd6b9de262fd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,17 +72,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-<<<<<<< HEAD
-=======
-    <state x="915" y="311" key="CommitChangelistDialog2" timestamp="1642495435119">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="915" y="311" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1642495435119" />
-    <state x="1045" y="426" key="RollbackChangesDialog" timestamp="1642495792208">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="1045" y="426" key="RollbackChangesDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1642495792208" />
->>>>>>> 1.1.7
     <state x="978" y="477" width="604" height="486" key="find.popup" timestamp="1641784786726">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>

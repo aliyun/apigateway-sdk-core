@@ -30,25 +30,39 @@ import com.alibaba.cloudapi.sdk.signature.HMacSHA256SignerFactory;
 
 
 public final class ApiRequest  extends ApiHttpMessage {
-    public ApiRequest(HttpMethod method, String path) {
-        this.scheme = scheme;
-        this.host = host;
+
+    public ApiRequest(HttpMethodModel method) {
         this.method = method;
+    }
+    public ApiRequest(HttpMethod method, String path) {
+        this.method = new HttpMethodModel(method);
         this.path = path;
         this.body = new byte[]{};
     }
 
     public ApiRequest(HttpMethod method, String path, byte[] body) {
-        this.scheme = scheme;
-        this.host = host;
+        this.method = new HttpMethodModel(method);
+        this.path = path;
+        this.body = body;
+    }
+
+    public ApiRequest(HttpMethodModel method, String path) {
+        this.method = method;
+        this.path = path;
+        this.body = new byte[]{};
+    }
+
+    public ApiRequest(HttpMethodModel method, String path, byte[] body) {
         this.method = method;
         this.path = path;
         this.body = body;
     }
 
+
+
     private Scheme scheme;
 
-    private HttpMethod method;
+    private HttpMethodModel method;
 
     private String host;
 
@@ -82,7 +96,7 @@ public final class ApiRequest  extends ApiHttpMessage {
         return scheme;
     }
 
-    public HttpMethod getMethod() {
+    public HttpMethodModel getMethod() {
         return method;
     }
 
@@ -169,7 +183,7 @@ public final class ApiRequest  extends ApiHttpMessage {
         this.scheme = scheme;
     }
 
-    public void setMethod(HttpMethod method) {
+    public void setMethod(HttpMethodModel method) {
         this.method = method;
     }
 

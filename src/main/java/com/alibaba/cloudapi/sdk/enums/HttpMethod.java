@@ -22,6 +22,12 @@ public enum HttpMethod {
     POST_BODY("POST", HttpConstant.CLOUDAPI_CONTENT_TYPE_STREAM, HttpConstant.CLOUDAPI_CONTENT_TYPE_JSON),
 
     /**
+     * httpPost with json body
+     */
+    POST_JSON("POST", HttpConstant.CLOUDAPI_CONTENT_TYPE_JSON, HttpConstant.CLOUDAPI_CONTENT_TYPE_JSON),
+
+
+    /**
      * httpPut with form
      */
     PUT_FORM("PUT", HttpConstant.CLOUDAPI_CONTENT_TYPE_FORM, HttpConstant.CLOUDAPI_CONTENT_TYPE_JSON),
@@ -32,6 +38,12 @@ public enum HttpMethod {
     PUT_BODY("PUT", HttpConstant.CLOUDAPI_CONTENT_TYPE_STREAM, HttpConstant.CLOUDAPI_CONTENT_TYPE_JSON),
 
     /**
+     * httpPut with json body
+     */
+    PUT_JSON("PUT", HttpConstant.CLOUDAPI_CONTENT_TYPE_JSON, HttpConstant.CLOUDAPI_CONTENT_TYPE_JSON),
+
+
+    /**
      * httpPatch with form
      */
     PATCH_FORM("PATCH", HttpConstant.CLOUDAPI_CONTENT_TYPE_FORM, HttpConstant.CLOUDAPI_CONTENT_TYPE_JSON),
@@ -40,6 +52,12 @@ public enum HttpMethod {
      * httpPatch with binary body
      */
     PATCH_BODY("PATCH", HttpConstant.CLOUDAPI_CONTENT_TYPE_STREAM, HttpConstant.CLOUDAPI_CONTENT_TYPE_JSON),
+
+    /**
+     * httpPatch with json body
+     */
+    PATCH_JSON("PATCH", HttpConstant.CLOUDAPI_CONTENT_TYPE_JSON, HttpConstant.CLOUDAPI_CONTENT_TYPE_JSON),
+
 
     /**
      * httpDelete
