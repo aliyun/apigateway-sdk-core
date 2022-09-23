@@ -34,11 +34,7 @@ import com.alibaba.cloudapi.sdk.model.ApiResponse;
 import com.alibaba.cloudapi.sdk.model.ApiWebSocketListner;
 import com.alibaba.cloudapi.sdk.model.WebSocketApiRequest;
 import com.alibaba.cloudapi.sdk.model.WebSocketClientBuilderParams;
-import com.alibaba.cloudapi.sdk.util.ApiRequestMaker;
-import com.alibaba.cloudapi.sdk.util.CallbackManager;
-import com.alibaba.cloudapi.sdk.util.HeartBeatManager;
-import com.alibaba.cloudapi.sdk.util.HttpCommonUtil;
-import com.alibaba.cloudapi.sdk.util.ObjectReference;
+import com.alibaba.cloudapi.sdk.util.*;
 
 import java.io.EOFException;
 import java.net.ConnectException;
@@ -81,7 +77,7 @@ public class WebSocketApiClient extends BaseApiClient {
     WebSocketListener webSocketListener;
     HeartBeatManager heartBeatManager;
     Thread heartbeatThread;
-    final int port = 8080;
+    int port = 8080;
     String deviceId;
     String connectionCredential = "";
     ApiRequest lastRegisterReqeust;
@@ -117,17 +113,42 @@ public class WebSocketApiClient extends BaseApiClient {
         appKey = params.getAppKey();
         appSecret = params.getAppSecret();
         deviceId = generateDeviceSum();
-        websocketUrl = Scheme.WEBSOCKET.getValue() + params.getHost();
+
+        if(params.getScheme() != null){
+            if(params.getScheme() == Scheme.WEBSOCKET || params.getScheme() == Scheme.WEBSOCKET_SECURITY){
+                scheme = params.getScheme();
+            }
+            else{
+                throw new SdkException("Scheme should be WEBSOCKET or WEBSOCKET_SECURITY");
+            }
+        }
+        else{
+            scheme = Scheme.WEBSOCKET;
+        }
+
+        websocketUrl = scheme.getValue() + params.getHost();
+        if(scheme == Scheme.WEBSOCKET){
+            port = 8080;
+        }else {
+            port = 8443;
+        }
+
+
         if(port != 80){
             websocketUrl = websocketUrl + ":" + port;
         }
         host = params.getHost();
         scheme = Scheme.WEBSOCKET;
-        client = new OkHttpClient.Builder()
-                .readTimeout(params.getReadTimeout(), TimeUnit.MILLISECONDS)
+
+        OkHttpClient.Builder builder = new OkHttpClient.Builder().readTimeout(params.getReadTimeout(), TimeUnit.MILLISECONDS)
                 .writeTimeout(params.getWriteTimeout(), TimeUnit.MILLISECONDS)
-                .connectTimeout(params.getConnectionTimeout(), TimeUnit.MILLISECONDS)
-                .build();
+                .connectTimeout(params.getConnectionTimeout(), TimeUnit.MILLISECONDS);
+        if(params.isSkipSsCheck()){
+            builder.sslSocketFactory(SSLSkipCheck.getSSLSocketFactory(), SSLSkipCheck.getX509TrustManager())
+                    .hostnameVerifier(SSLSkipCheck.getHostnameVerifier());
+        }
+
+        client = builder.build();
         connectRequest = new Request.Builder().url(websocketUrl).build();
         apiWebSocketListner = params.getApiWebSocketListner();
         callbackManager = new CallbackManager(params.getCallbackThreadPoolCount() , params.getRequestExpiredTime());
@@ -257,7 +278,7 @@ public class WebSocketApiClient extends BaseApiClient {
                             callbackManager.callback(seq, response);
                         }
                         catch (Exception ex){
-                            apiWebSocketListner.onFailure(ex , new ApiResponse(508 , "Call back occue error" , ex));
+                            apiWebSocketListner.onFailure(ex , new ApiResponse(508 , "Call back occur error , text is " + text , ex));
                         }
 
                     }

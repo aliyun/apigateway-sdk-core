@@ -6,7 +6,8 @@ package com.alibaba.cloudapi.sdk.enums;
 public enum Scheme {
     HTTP("HTTP://"),
     HTTPS("HTTPS://"),
-    WEBSOCKET("WS://");
+    WEBSOCKET("WS://"),
+    WEBSOCKET_SECURITY("WSS://");
 
     String value;
 
