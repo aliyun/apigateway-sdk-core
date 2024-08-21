@@ -72,11 +72,11 @@ public class ApiRequestMaker {
 
         //设置请求数据类型
         if(null == request.getFirstHeaderValue(HttpConstant.CLOUDAPI_HTTP_HEADER_CONTENT_TYPE)) {
-            request.addHeader(HttpConstant.CLOUDAPI_HTTP_HEADER_CONTENT_TYPE, request.getMethod().getRequestContentType());
+            request.addHeader(HttpConstant.CLOUDAPI_HTTP_HEADER_CONTENT_TYPE, HttpConstant.CLOUDAPI_CONTENT_TYPE_JSON);
         }
         //设置应答数据类型
         if(null == request.getFirstHeaderValue(HttpConstant.CLOUDAPI_HTTP_HEADER_ACCEPT)){
-            request.addHeader(HttpConstant.CLOUDAPI_HTTP_HEADER_ACCEPT , request.getMethod().getAcceptContentType());
+            request.addHeader(HttpConstant.CLOUDAPI_HTTP_HEADER_ACCEPT , HttpConstant.CLOUDAPI_CONTENT_TYPE_JSON);
         }
 
 

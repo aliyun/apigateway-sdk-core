@@ -124,7 +124,7 @@ public class OkHttp3Client  extends BaseApiClient {
             requestBody = RequestBody.create(MediaType.parse(request.getFirstHeaderValue(HttpConstant.CLOUDAPI_HTTP_HEADER_CONTENT_TYPE)) , request.getBody());
         }
         return new Request.Builder()
-                .method(request.getMethod().getValue() , requestBody)
+                .method(request.getMethod().name(), requestBody)
                 .url(request.getUrl())
                 .headers(getHeadersFromMap(request.getHeaders()))
                 .build();

@@ -1,8 +1,8 @@
 package com.alibaba.cloudapi.sdk.model;
 
-import org.apache.http.client.HttpRequestRetryHandler;
-import org.apache.http.config.Registry;
-import org.apache.http.conn.socket.ConnectionSocketFactory;
+import org.apache.hc.client5.http.impl.DefaultHttpRequestRetryStrategy;
+import org.apache.hc.core5.http.config.Registry;
+import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
 
 import javax.net.ssl.*;
 import java.security.SecureRandom;
@@ -22,7 +22,7 @@ public class HttpClientBuilderParams extends BaseClientInitialParam {
     X509TrustManager x509TrustManager = null;
     HostnameVerifier hostnameVerifier = null;
     SecureRandom secureRandom = null;
-    HttpRequestRetryHandler requestRetryHandler = null;
+    DefaultHttpRequestRetryStrategy requestRetryHandler = null;
 
 
     /**
@@ -38,6 +38,7 @@ public class HttpClientBuilderParams extends BaseClientInitialParam {
     private int maxIdleConnections = 5;
     private long maxIdleTimeMillis = 10 * 1000L;
     private long keepAliveDurationMillis = -1L;
+    private long intevictIdleConnectionsIntervalMillis = 2000L;
 
 
 
@@ -57,11 +58,11 @@ public class HttpClientBuilderParams extends BaseClientInitialParam {
 
     }
 
-    public HttpRequestRetryHandler getRequestRetryHandler() {
+    public DefaultHttpRequestRetryStrategy getRequestRetryHandler() {
         return requestRetryHandler;
     }
 
-    public void setRequestRetryHandler(HttpRequestRetryHandler requestRetryHandler) {
+    public void setRequestRetryHandler(DefaultHttpRequestRetryStrategy requestRetryHandler) {
         this.requestRetryHandler = requestRetryHandler;
     }
 
@@ -176,6 +177,14 @@ public class HttpClientBuilderParams extends BaseClientInitialParam {
 
     public void setSecureRandom(SecureRandom secureRandom) {
         this.secureRandom = secureRandom;
+    }
+
+    public long getIntevictIdleConnectionsIntervalMillis() {
+        return intevictIdleConnectionsIntervalMillis;
+    }
+
+    public void setIntevictIdleConnectionsIntervalMillis(long intevictIdleConnectionsIntervalMillis) {
+        this.intevictIdleConnectionsIntervalMillis = intevictIdleConnectionsIntervalMillis;
     }
 }
 

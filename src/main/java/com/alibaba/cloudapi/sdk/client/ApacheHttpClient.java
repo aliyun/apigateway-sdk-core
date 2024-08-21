@@ -26,34 +26,31 @@ import com.alibaba.cloudapi.sdk.model.HttpClientBuilderParams;
 import com.alibaba.cloudapi.sdk.util.ApiRequestMaker;
 import com.alibaba.cloudapi.sdk.util.HttpCommonUtil;
 import com.alibaba.cloudapi.sdk.util.SignUtil;
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.NoHttpResponseException;
-import org.apache.http.client.HttpRequestRetryHandler;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.entity.EntityBuilder;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.client.methods.RequestBuilder;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.config.ConnectionConfig;
-import org.apache.http.config.Registry;
-import org.apache.http.config.RegistryBuilder;
-import org.apache.http.config.SocketConfig;
-import org.apache.http.conn.socket.ConnectionSocketFactory;
-import org.apache.http.conn.socket.PlainConnectionSocketFactory;
-import org.apache.http.conn.ssl.DefaultHostnameVerifier;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.entity.ContentType;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.HttpContext;
-import org.apache.http.ssl.SSLContextBuilder;
-import org.apache.http.ssl.TrustStrategy;
-import org.apache.http.util.EntityUtils;
+import org.apache.hc.client5.http.impl.DefaultHttpRequestRetryStrategy;
+import org.apache.hc.core5.http.*;
+import org.apache.hc.core5.util.TimeValue;
+import org.apache.hc.core5.util.Timeout;
+import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.client5.http.entity.EntityBuilder;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
+import org.apache.hc.core5.net.URIBuilder;
+import org.apache.hc.client5.http.config.ConnectionConfig;
+import org.apache.hc.core5.http.config.Registry;
+import org.apache.hc.core5.http.config.RegistryBuilder;
+import org.apache.hc.core5.http.io.SocketConfig;
+import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
+import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
+import org.apache.hc.client5.http.ssl.DefaultHostnameVerifier;
+import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.core5.http.message.BasicNameValuePair;
+import org.apache.hc.core5.http.protocol.HttpContext;
+import org.apache.hc.core5.ssl.SSLContextBuilder;
+import org.apache.hc.core5.ssl.TrustStrategy;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -79,13 +76,13 @@ public class ApacheHttpClient extends BaseApiClient {
     private ExecutorService executorService;
     private CloseableHttpClient httpClient;
     private PoolingHttpClientConnectionManager connectionManager;
-    private HttpRequestRetryHandler requestRetryHandler;
+    private DefaultHttpRequestRetryStrategy retryStrategy;
 
     protected ApacheHttpClient(){}
 
     public void init(final HttpClientBuilderParams params) {
         SocketConfig socketConfig = SocketConfig.custom().setTcpNoDelay(true).setSoKeepAlive(true).setSoReuseAddress(true)
-                .setSoTimeout((int)params.getReadTimeout()).build();
+                .setSoTimeout(Timeout.ofMilliseconds(params.getReadTimeout())).build();
 
 
         Registry<ConnectionSocketFactory> registry = getRegistry();
@@ -100,10 +97,9 @@ public class ApacheHttpClient extends BaseApiClient {
         connectionManager.setMaxTotal(params.getDispatchMaxRequests());
         connectionManager.setDefaultMaxPerRoute(params.getDispatchMaxRequestsPerHost());
 
-        requestRetryHandler = params.getRequestRetryHandler();
-        if(null == requestRetryHandler){
-            requestRetryHandler = new HttpRequestRetryHandler() {
-                @Override
+        retryStrategy = params.getRequestRetryHandler();
+        if(null == retryStrategy){
+            retryStrategy = new DefaultHttpRequestRetryStrategy() {
                 public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
                     if (executionCount > 2) {
                         return false;
@@ -119,18 +115,24 @@ public class ApacheHttpClient extends BaseApiClient {
 
 
         RequestConfig defaultConfig = RequestConfig.custom()
-                .setConnectTimeout((int)params.getConnectionTimeout())
-                .setSocketTimeout((int)params.getReadTimeout())
-                .setConnectionRequestTimeout((int)params.getReadTimeout())
+                .setConnectionRequestTimeout(Timeout.ofMilliseconds(params.getReadTimeout()))
                 .build();
+        ConnectionConfig connectionConfig = ConnectionConfig.custom()
+                .setConnectTimeout(Timeout.ofMilliseconds(params.getConnectionTimeout()))
+                .setSocketTimeout(Timeout.ofMilliseconds(params.getReadTimeout()))
+                .build();
+        connectionManager.setDefaultConnectionConfig(connectionConfig);
 
 
 
 
 
-        httpClient = HttpClients.custom().setConnectionManager(connectionManager).setDefaultRequestConfig(defaultConfig).setRetryHandler(requestRetryHandler).build();
-        ApacheIdleConnectionCleaner.registerConnectionManager(connectionManager, params.getMaxIdleTimeMillis());
-
+        httpClient = HttpClients.custom()
+                .setConnectionManager(connectionManager)
+                .setDefaultRequestConfig(defaultConfig)
+                .setRetryStrategy(retryStrategy)
+                .evictIdleConnections(TimeValue.ofMilliseconds(params.getIntevictIdleConnectionsIntervalMillis()))
+                .build();
         this.appKey = params.getAppKey();
         this.appSecret = params.getAppSecret();
         host = params.getHost();
@@ -186,14 +188,14 @@ public class ApacheHttpClient extends BaseApiClient {
     }
 
 
-    private HttpUriRequest buildRequest(ApiRequest apiRequest) {
+    private ClassicHttpRequest buildRequest(ApiRequest apiRequest) {
         if(apiRequest.getHttpConnectionMode() == HttpConnectionModel.SINGER_CONNECTION){
             apiRequest.setHost(host);
             apiRequest.setScheme(scheme);
         }
 
         ApiRequestMaker.make(apiRequest , appKey , appSecret);
-        RequestBuilder builder = RequestBuilder.create(apiRequest.getMethod().getValue());
+        ClassicRequestBuilder builder = ClassicRequestBuilder.create(apiRequest.getMethod().name());
 
         /*
          *  拼接URL
@@ -221,7 +223,7 @@ public class ApacheHttpClient extends BaseApiClient {
 
         //设置请求数据类型
         if(null == apiRequest.getFirstHeaderValue(HttpConstant.CLOUDAPI_HTTP_HEADER_CONTENT_TYPE)) {
-            bodyBuilder.setContentType(ContentType.parse(apiRequest.getMethod().getRequestContentType()));
+            bodyBuilder.setContentType(ContentType.APPLICATION_JSON);
         }
         else{
             bodyBuilder.setContentType(ContentType.parse(apiRequest.getFirstHeaderValue(HttpConstant.CLOUDAPI_HTTP_HEADER_CONTENT_TYPE)));
@@ -257,11 +259,11 @@ public class ApacheHttpClient extends BaseApiClient {
     }
 
     private ApiResponse parseToApiResponse(HttpResponse httpResponse) throws IOException {
-        ApiResponse result = new ApiResponse(httpResponse.getStatusLine().getStatusCode());
+        ApiResponse result = new ApiResponse(httpResponse.getCode());
 
         // headers
         result.setHeaders(new HashMap<String, List<String>>());
-        for (Header header : httpResponse.getAllHeaders()) {
+        for (Header header : httpResponse.getHeaders()) {
             List<String> values = result.getHeaders().get(header.getName());
 
             if(values == null){
@@ -275,14 +277,14 @@ public class ApacheHttpClient extends BaseApiClient {
         }
 
         // message
-        result.setMessage(httpResponse.getStatusLine().getReasonPhrase());
+        result.setMessage(httpResponse.getReasonPhrase());
 
 
-        if(httpResponse.getEntity() != null){
+        if(((CloseableHttpResponse)httpResponse).getEntity() != null){
             // content type
-            Header contentType = httpResponse.getEntity().getContentType();
+            String contentType = ((CloseableHttpResponse)httpResponse).getEntity().getContentType();
             if(contentType != null){
-                result.setContentType(contentType.getValue());
+                result.setContentType(contentType);
             }
             else
             {
@@ -290,7 +292,7 @@ public class ApacheHttpClient extends BaseApiClient {
             }
 
             // body
-            result.setBody(EntityUtils.toByteArray(httpResponse.getEntity()));
+            result.setBody(EntityUtils.toByteArray(((CloseableHttpResponse)httpResponse).getEntity()));
 
             String contentMD5 = result.getFirstHeaderValue(HttpConstant.CLOUDAPI_HTTP_HEADER_CA_CONTENT_MD5);
             if(null != contentMD5 && !"".equals(contentMD5)){
@@ -314,7 +316,7 @@ public class ApacheHttpClient extends BaseApiClient {
 
     @Override
     public final ApiResponse sendSyncRequest(ApiRequest apiRequest) {
-        HttpUriRequest httpRequest = buildRequest(apiRequest);
+        ClassicHttpRequest httpRequest = buildRequest(apiRequest);
         CloseableHttpResponse httpResponse = null;
         try {
             httpResponse = httpClient.execute(httpRequest);
@@ -356,8 +358,6 @@ public class ApacheHttpClient extends BaseApiClient {
 
     public void shutdown() {
         executorService.shutdown();
-        ApacheIdleConnectionCleaner.removeConnectionManager(connectionManager);
-        connectionManager.shutdown();
         HttpCommonUtil.closeQuietly(httpClient);
     }
 

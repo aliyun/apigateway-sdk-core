@@ -81,7 +81,7 @@ public class SignUtil {
     public static String buildStringToSign(ApiRequest apiRequest) {
 
         StringBuilder sb = new StringBuilder();
-        sb.append(apiRequest.getMethod().getValue()).append(SdkConstant.CLOUDAPI_LF);
+        sb.append(apiRequest.getMethod().name()).append(SdkConstant.CLOUDAPI_LF);
 
         //如果有@"Accept"头，这个头需要参与签名
         if (apiRequest.getFirstHeaderValue(HttpConstant.CLOUDAPI_HTTP_HEADER_ACCEPT) != null) {

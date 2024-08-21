@@ -19,9 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d08bd4cf-c764-4f48-991d-cd6b9de262fd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d08bd4cf-c764-4f48-991d-cd6b9de262fd" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,22 +28,28 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
   <component name="ProjectId" id="23LvWozh3CDQDNUuvM5ZblQS9eV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "1.1.9",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/fred/idea/apigateway-sdk-core"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -69,32 +73,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="915" y="311" key="CommitChangelistDialog2" timestamp="1642495435119">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="915" y="311" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1642495435119" />
-    <state x="1045" y="426" key="RollbackChangesDialog" timestamp="1642495792208">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="1045" y="426" key="RollbackChangesDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1642495792208" />
-    <state x="100" y="100" width="2360" height="1240" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1642497696832">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="100" y="100" width="2360" height="1240" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1642497696831" />
-    <state x="100" y="100" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1642497696832">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="100" y="100" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1642497696832" />
-    <state x="978" y="477" width="604" height="486" key="find.popup" timestamp="1641784786726">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="978" y="477" width="604" height="486" key="find.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1641784786726" />
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1641785238021">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1641785238021" />
   </component>
 </project>
