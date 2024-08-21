@@ -6,7 +6,7 @@
 
     <groupId>com.aliyun.api.gateway</groupId>
     <artifactId>sdk-core-java</artifactId>
-    <version>1.1.9</version>
+    <version>1.2.0</version>
     <packaging>jar</packaging>
     <name>Aliyun API Gateway SDK Core Lib for Java</name>
     <description>The core dependency lib for all Aliyun api gateway java sdk</description>
