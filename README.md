@@ -9,16 +9,15 @@
 
 * SDK文件夹
 	* sdk/{{regionId}}		`JavaSDK文件夹，包含每个Group的所有API的接口调用代码`
-        * HttpApiClient{{group}}.java `包含对应Group所有HTTP通道的API方法` 
-		* HttpsApiClient{{group}}.java	`包含对应Group所有HTTPS通道API方法` 
-        * WebSocketApiClient{{group}}.java `包含对应Group所有WebSocket通道的API法` 
-        * Demo{{group}}.java `包含对应Group所有API调用示例` 
-	* doc/{{regionId}} 
+    * HttpApiClient{{group}}.java `包含对应Group所有HTTP通道的API方法`
+		* HttpsApiClient{{group}}.java	`包含对应Group所有HTTPS通道API方法`
+    * Demo{{group}}.java `包含对应Group所有API调用示例`
+	* doc/{{regionId}}
 		* ApiDocument_{{group}}.md	`对应Group的API接口文档`
-	* lib 
-		* sdk-core-java-1.1.3.jar `sdk的core包，为本sdk的依赖包`
-		* sdk-core-java-1.1.3-sources.jar		`上述依赖包的源码`
-		* sdk-core-java-1.1.3-javadoc.jar		`core包的文档`
+	* lib
+		* sdk-core-java-1.2.1.jar `sdk的core包，为本sdk的依赖包`
+		* sdk-core-java-1.2.1-sources.jar		`上述依赖包的源码`
+		* sdk-core-java-1.2.1-javadoc.jar		`core包的文档`
 	* Readme.md	`本SDK使用指南`
 	* LICENSE `版权许可`
 
@@ -28,29 +27,29 @@
 ## 2 SDK使用
 ### 2.1 环境准备
 
- 1. 阿里云API网关Java SDK适用于`JDK 1.6`及以上版本
+ 1. 阿里云API网关Java SDK适用于`JDK 1.8`及以上版本
  2. 您需要准备一对授权密钥供SDK生成鉴权和签名信息，即 [AppKey和AppSecret](https://help.aliyun.com/document_detail/29488.html?spm=5176.product29462.6.552.HqvvXr)
- 
- **重要提示：`AppKey`和`AppSecret`是网关认证用户请求的密钥，这两个配置如果保存在客户端，请妥善加密。** 
+
+ **重要提示：`AppKey`和`AppSecret`是网关认证用户请求的密钥，这两个配置如果保存在客户端，请妥善加密。**
  3. 在pom.xml中添加如下依赖：
 
 ```html
 <dependency>
     <groupId>com.aliyun.api.gateway</groupId>
     <artifactId>sdk-core-java</artifactId>
-    <version>1.1.3</version>
+    <version>1.2.1</version>
 </dependency>
 <dependency>
-    <groupId>com.alibaba</groupId>
-    <artifactId>fastjson</artifactId>
-    <version>1.2.52</version>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.6.7.5</version>
 </dependency>
 ```
-		
+
 
 ### 2.2 引入SDK的API接口调用类
 
-1. 把sdk文件夹中所有Group的通道类`HttpApiClient*.java`、`HttpsApiClient*.java`和`WebSocketApiClient*.java`文件复制到您的项目文件夹中；
+1. 把sdk文件夹中所有Group的通道类`HttpApiClient*.java`、`HttpsApiClient*.java`文件复制到您的项目文件夹中；
 2. 修正这些类文件的package；
 
 
@@ -82,30 +81,6 @@ HttpsClientUnitTest.getInstance().init(httpsParam);
 - 如果您的SSL证书是自行生成的或者无效的，不被认可的证书，您需要使用忽略证书代码去初始化HTTPS通道才能正常调用；
 - 忽略证书验证的方法是不安全的方法，证书有可能被篡改导致通信安全性降低，建议您去正规渠道购买SSL证书并配置到API网关上；
 - getNoVerifyRegistry()的实现请参考带有HTTPS通道初始化的Demo中的代码，这段代码建议只在Demo测试的时候用，不建议用于生产。
-
-#### 2.3.3 WebSocket通道类的初始化
-````
-WebSocketClientBuilderParams clientParam = new WebSocketClientBuilderParams();
-clientParam.setAppKey("");
-clientParam.setAppSecret("");
-clientParam.setApiWebSocketListner(new ApiWebSocketListner() {
-	@Override
-	public void onNotify(String message) {
-		System.out.println("receive notice :" + message);
-		notifyReturnMessage = message;
-		notifyCountDown.countDown();
-	}
-	
-	@Override
-	public void onFailure(Throwable t, ApiResponse response) {
-		t.printStackTrace();
-		notifyCountDown.countDown();
-	}
-});
-WebSocketClientUnitTest.getInstance().init(clientParam);
-````
-> ####注意####
-- ApiWebSocketListner用于监听双向通信接收服务器推下来的Message，如果不使用双向通信功能可以不初始化这个方法；
 
 
 ### 2.4 调用API接口
@@ -157,7 +132,7 @@ Java的SDK允许开发者设置请求HTTP连接池的细节来适配高并发场
         HttpClientBuilderParams httpsParam = new HttpClientBuilderParams();
         httpsParam.setAppKey("");
         httpsParam.setAppSecret("");
-        
+
         //连接池中的线程池
         httpsParam.setExecutorService(Executors.newFixedThreadPool(100));
         //最大并发连接数
@@ -166,7 +141,7 @@ Java的SDK允许开发者设置请求HTTP连接池的细节来适配高并发场
         httpsParam.setDispatchMaxRequestsPerHost(200);
         //请求读超时
         httpsParam.setReadTimeout(15000L);
-        
+
         HttpsApiClientWithThreadPool.getInstance().init(httpsParam);
 ```
 
@@ -182,7 +157,7 @@ SDK所有默认超时时间都是10秒，如果需要做个性化设置，具体
         HttpClientBuilderParams httpsParam = new HttpClientBuilderParams();
         httpsParam.setAppKey("");
         httpsParam.setAppSecret("");
-        
+
 
         //请求读超时
         httpsParam.setReadTimeout(15000L);
@@ -190,13 +165,63 @@ SDK所有默认超时时间都是10秒，如果需要做个性化设置，具体
         httpsParam.setWriteTimeout(15000L);
         //建立连接超时
         httpsParam.setConnectionTimeout(15000L);
-        
+
         HttpsApiClientWithThreadPool.getInstance().init(httpsParam);
 ```
 
 需要注意一定的是，客户端的超时时间务必设置得比API定义中的后端超时时间要长一点，避免后端还没返回，客户端就认为超时了并且把连接断了。
 
-### 3.3 同一个client对象需要调用多个HOST
+### 3.3 设置自动重试
+
+在因为网络问题，请求发送给API网关失败的某些情况下，可以设置自动重试，SDK会自动再次发送对应的请求到API网关：
+
+```
+
+DefaultHttpRequestRetryStrategy myRetryHandler = new DefaultHttpRequestRetryStrategy() {
+
+		public boolean retryRequest(IOException exception , int executionCount , HttpContext context) {
+				if (exception == null) {
+						throw new IllegalArgumentException("Exception parameter may not be null");
+				}
+				if (context == null) {
+						throw new IllegalArgumentException("HTTP context may not be null");
+				}
+
+				/**
+				 * 建议做幂等判断，非幂等请求不建议重试，代码省略
+				 */
+
+				// 建议最多重试一次
+				if (executionCount < 2) {
+						return true;
+				}
+
+				// TCP连接坏掉，建议重试
+				if (exception instanceof NoHttpResponseException) {
+						return true;
+				}
+
+				// 连接被服务器断掉，根据情况重试
+				//if (exception instanceof ConnectionResetException) {
+				//	return true;
+				//}
+
+				return false;
+		}
+
+};
+
+        HttpClientBuilderParams httpsParam = new HttpClientBuilderParams();
+        httpsParam.setAppKey("");
+        httpsParam.setAppSecret("");
+
+				httpsParam.setRequestRetryHandler(myRetryHandler);
+
+				HttpsApiClientWithThreadPool.getInstance().init(httpsParam);
+
+```
+
+### 3.4 同一个client对象需要调用多个HOST
 
 本SDK设计的是，一个client使用一个长连接和后端一个HOST通信，但有些场景同一个client对象可能需要调用多个HOST，可以如下设置
 
@@ -208,7 +233,22 @@ SDK所有默认超时时间都是10秒，如果需要做个性化设置，具体
         request.setHttpConnectionMode(HttpConnectionModel.MULTIPLE_CONNECTION);
         request.setScheme(Scheme.HTTPS);
         request.setHost("www.aliyun.com");
-        
+
+        sendAsyncRequest(request , callback);
+    }
+
+```
+
+### 3.5 设置ContentType
+
+本SDK默认为各种body添加了ContentType，但用户也可以自己定义ContentType，添加一个ContentType头即可
+
+```
+    public void invokeApi(String CaMarketExperiencePlan , byte[] body , ApiCallback callback) {
+        String path = "/postXml";
+        ApiRequest request = new ApiRequest(HttpMethod.POST_BODY , path, body);
+        request.addHeader(HttpConstant.CLOUDAPI_HTTP_HEADER_CONTENT_TYPE , HttpConstant.CLOUDAPI_CONTENT_TYPE_XML);
+
         sendAsyncRequest(request , callback);
     }
 
