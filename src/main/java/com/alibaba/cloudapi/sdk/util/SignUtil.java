@@ -29,6 +29,7 @@ import com.alibaba.cloudapi.sdk.signature.SignerFactoryManager;
 import org.apache.commons.codec.binary.Base64;
 
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -244,6 +245,20 @@ public class SignUtil {
             return base64Result.length() > 24 ? base64Result.substring(0, 24) : base64Result;
         } catch (final NoSuchAlgorithmException e) {
             throw new IllegalArgumentException("unknown algorithm MD5");
+        }
+    }
+
+
+    public static String base64AndSHA256(byte[] body){
+        if (body == null) {
+            throw new IllegalArgumentException("bytes can not be null");
+        }
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = messageDigest.digest(body);
+            return Base64.encodeBase64String(hash);
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalArgumentException("unknown algorithm SHA-256");
         }
     }
 

@@ -30,6 +30,8 @@ public class HttpConstant {
     public static final String CLOUDAPI_HTTP_HEADER_CONTENT_MD5 = "content-md5";
     //请求Body内容MD5 Header
     public static final String CLOUDAPI_HTTP_HEADER_CA_CONTENT_MD5 = "x-ca-content-md5";
+
+    public static final String CLOUDAPI_HTTP_HEADER_CONTENT_SHA256 = "x-ca-signed-payload";
     //请求Header Content-Type
     public static final String CLOUDAPI_HTTP_HEADER_CONTENT_TYPE = "content-type";
     //请求Header UserAgent

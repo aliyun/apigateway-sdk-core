@@ -64,6 +64,7 @@ public final class ApiRequest  extends ApiHttpMessage {
     private boolean isBase64BodyViaWebsocket = false;
 
     private boolean isGenerateContentMd5 = true;
+    private boolean isGenerateContentSHA256 = false;
     private boolean isGenerateNonce = true;
 
     private HttpConnectionModel httpConnectionMode = HttpConnectionModel.SINGER_CONNECTION;
@@ -206,6 +207,14 @@ public final class ApiRequest  extends ApiHttpMessage {
 
     public void setGenerateContentMd5(boolean generateContentMd5) {
         isGenerateContentMd5 = generateContentMd5;
+    }
+
+    public boolean isGenerateContentSHA256() {
+        return isGenerateContentSHA256;
+    }
+
+    public void setGenerateContentSHA256(boolean generateContentSHA256) {
+        isGenerateContentSHA256 = generateContentSHA256;
     }
 
     public boolean isGenerateNonce() {

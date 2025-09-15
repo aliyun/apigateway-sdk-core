@@ -44,8 +44,8 @@ public class HMacSHA256SignerFactory implements ISignerFactory {
             byte[] keyBytes = secretKey.getBytes(SdkConstant.CLOUDAPI_ENCODING);
             hmacSha256.init(new SecretKeySpec(keyBytes, 0, keyBytes.length, "HmacSHA256"));
 
-            byte[] md5Result = hmacSha256.doFinal(strToSign.getBytes(SdkConstant.CLOUDAPI_ENCODING));
-            return Base64.encodeBase64String(md5Result);
+            byte[] encodeResult = hmacSha256.doFinal(strToSign.getBytes(SdkConstant.CLOUDAPI_ENCODING));
+            return Base64.encodeBase64String(encodeResult);
         }
     }
 }

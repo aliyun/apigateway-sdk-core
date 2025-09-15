@@ -22,9 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d08bd4cf-c764-4f48-991d-cd6b9de262fd" name="Default Changelist" comment="remove okhttp lib and code">
+    <list default="true" id="d08bd4cf-c764-4f48-991d-cd6b9de262fd" name="Default Changelist" comment="update lib to new version">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/constant/HttpConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/ApiRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/model/ApiRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/signature/HMacSHA256SignerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/signature/HMacSHA256SignerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/util/ApiRequestMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/util/ApiRequestMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/util/SignUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/cloudapi/sdk/util/SignUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="1.2.0" />
+        <entry key="$PROJECT_DIR$" value="1.2.1" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,14 +51,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "1.2.1",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/fred/idea/apigateway-sdk-core"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;1.2.2&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/fred/idea/apigateway-sdk-core&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -80,7 +84,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747208142485</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update version to 1.2.1">
+      <option name="closed" value="true" />
+      <created>1747215893044</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1747215893044</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update lib to new version">
+      <option name="closed" value="true" />
+      <created>1749017733128</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1749017733128</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -96,6 +116,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="remove okhttp lib and code" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove okhttp lib and code" />
+    <MESSAGE value="update version to 1.2.1" />
+    <MESSAGE value="update lib to new version" />
+    <option name="LAST_COMMIT_MESSAGE" value="update lib to new version" />
   </component>
 </project>

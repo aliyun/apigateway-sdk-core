@@ -91,6 +91,13 @@ public class ApiRequestMaker {
         if(null != request.getBody() && request.isGenerateContentMd5() && request.getBody().length >0 && null == request.getFirstHeaderValue(HttpConstant.CLOUDAPI_HTTP_HEADER_CONTENT_MD5)){
             request.addHeader(HttpConstant.CLOUDAPI_HTTP_HEADER_CONTENT_MD5 , SignUtil.base64AndMD5(request.getBody()));
         }
+        /**
+         *  如果formParams不为空
+         *  将Form中的内容拼接成字符串后使用UTF8编码序列化成Byte数组后加入到Request中去
+         */
+        if(null != request.getBody() && request.isGenerateContentSHA256() && request.getBody().length >0 && null == request.getFirstHeaderValue(HttpConstant.CLOUDAPI_HTTP_HEADER_CONTENT_SHA256)){
+            request.addHeader(HttpConstant.CLOUDAPI_HTTP_HEADER_CONTENT_SHA256 , SignUtil.base64AndSHA256(request.getBody()));
+        }
 
         /**
          *  将Request中的httpMethod、headers、path、queryParam、formParam合成一个字符串用hmacSha256算法双向加密进行签名
